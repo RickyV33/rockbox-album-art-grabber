@@ -69,6 +69,8 @@ def extract_jpg(entry):
             image = Image.open(BytesIO(image_data))
             if image.width > 500 or image.height > 500:
                 image = image.resize((500, 500))
+            if image.mode == 'RGBA':
+                image = image.convert('RGB')
             path =  dir_path = os.path.dirname(entry.path) + '/cover.jpg'
             image.save(path, 'JPEG')
     except ID3NoHeaderError:

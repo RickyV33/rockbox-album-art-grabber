@@ -9,6 +9,7 @@ RUN apk add --no-cache gcc musl-dev zlib-dev jpeg-dev libjpeg-turbo-dev
 
 # Copy the requirements.txt file into the container
 COPY requirements.txt .
+COPY app.py .
 
 # Upgrade pip and install the requirements
 RUN pip install --upgrade pip && pip install -r requirements.txt
